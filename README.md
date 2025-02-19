@@ -1,4 +1,4 @@
-# Web_Scraping_Chatbot
+# Web_Scraping_Chatbot (Sugarcane)
 
 ## Overview
 This project demonstrates how to create a question-answering (QA) chatbot using FAISS for vector storage and LangChain for building the retrieval-based QA chain. The chatbot scrapes content from provided URLs, processes the text into embeddings, and answers questions using a fine-tuned LaMini-T5 model.
@@ -8,7 +8,7 @@ FAISS (Facebook AI Similarity Search) => VectorDB (to store the embeddings)
 Model= Lamini-T5( developed by UAE University)=> to refine the response and to store the conversation
 
 ## Inputs
-Internal_links.txt`: File containing URLs to scrape
+Sugarcane_links.txt`: File containing URLs to scrape
 
 ## Outputs
 Answers to User Queries:
@@ -27,6 +27,11 @@ The text scraped from URLs is processed into semantic embeddings, allowing fast 
 2. Creates and stores embeddings using FAISS vector database.
 3. Leverages a fine-tuned language model (LaMini-T5) for answering questions.
 4. Allows saving and loading FAISS vector databases for efficiency.
+5. Maintains a log of successfully scraped links to avoid redundant processing.
+
+Supports retry mechanism for failed requests.
+
+Interactive chatbot interface for user queries.
 
 The program will ask whether to load an existing FAISS database or create a new one from scratch.
 After processing embeddings, you can ask questions based on the content of the scraped URLs.
@@ -39,10 +44,9 @@ After processing embeddings, you can ask questions based on the content of the s
 
 ## Configuration
 - `FAISS_DB_DIR`: Directory to save or load the FAISS vector database.
-- `Internal_links.txt`: File containing URLs to scrape.
+- `Sugarcane_links.txt`: File containing URLs to scrape.
 - `MAX_RETRIES` and `RETRY_DELAY`: Configure retry attempts for failed network requests.
   
 ## Notes
 1. Ensure the URLs provided are accessible and contain sufficient text content.
-2. Internal links are filtered to exclude image files (e.g., `.jpg`, `.png`).
-3. Processing large websites with many links may take significant time and resources.
+2. Processing large websites with many links may take significant time and resources.
